@@ -1,0 +1,48 @@
+﻿
+  <questao1>SELECT DISTINCT f.primeiro_nome, COUNT(0) as quantidade, sum(p.valor) as valor
+FROM funcionario f 
+inner join aluguel a
+on a.funcionario_id = f.funcionario_id
+inner join pagamento p 
+on a.aluguel_id = p.aluguel_id
+where a.data_de_aluguel BETWEEN '2005-05-01' and '2005-05-31'
+group by f.funcionario_id</questao1>
+  <questao2>SELECT DISTINCT F.filme_id, F.titulo
+FROM FILME F
+WHERE F.TITULO  LIKE "%dinosaur%"</questao2>
+  <questao3>SELECT c.primeiro_nome, c.ultimo_nome, c.email
+from cliente c
+inner join aluguel a ON C.cliente_id = a.cliente_id
+where a.aluguel_ID IN (SELECT P.ALUGUEL_ID FROM PAGAMENTO P WHERE P.VALOR = 0)</questao3>
+  <questao4>SELECT c.primeiro_nome, c.ultimo_nome, c.email
+from cliente c
+UNION (select f.primeiro_nome, f.ultimo_nome, f.email from funcionario f)</questao4>
+  <questao5>SELECT DISTINCT c.nome, SUM(P.VALOR) AS montante
+FROM pagamento P
+INNER JOIN aluguel AL
+ON P.aluguel_id = AL.ALUGUEL_ID
+INNER JOIN INVENTARIO I 
+ON AL.inventario_id = I.inventario_id
+INNER JOIN filme_categoria FC 
+ON I.filme_id = FC.filme_id
+INNER JOIN categoria C
+ON FC.categoria_id = C.categoria_id
+GROUP BY C.NOME
+order by montante desc
+</questao5>
+  <questao6></questao6>
+  <questao7></questao7>
+  <questao8></questao8>
+  <questao9></questao9>
+  <questao10></questao10>
+  <questao11></questao11>
+  <questao12></questao12>
+  <questao13></questao13>
+  <questao14>SELECT ROUND(AVG(DATEDIFF(AL.DATA_DE_DEVOLUCAO, AL.DATA_DE_ALUGUEL))) as media from aluguel al 
+</questao14>
+  <questao15>select concat(left(a.primeiro_nome,1),left(a.ultimo_nome,1)) as iniciais from ator a
+</questao15>
+  <questao16>select f.titulo from filme f
+order by rand()
+limit 1</questao16>
+</document>
